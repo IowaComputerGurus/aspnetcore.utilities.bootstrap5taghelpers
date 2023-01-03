@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>ICG.AspNetCore.Utilities.Bootstrap5TagHelpers</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ICG.AspNetCore.Utilities.Bootstrap5TagHelpers</PackageId>
+    <Title>AspNetCore Utilities Bootstrap5 TagHelpers</Title>
+    <Description>A collection of TagHelpers making Bootstrap5 utilization easier for AspNetCore Projects.</Description>
+    <Copyright>Copyright 2023, IowaComputerGurus, Subject to the MIT License</Copyright>
+    <PackageProjectUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.bootstrap5taghelpers</PackageProjectUrl>
+    <PackageTags>aspnetcore;utility;bootstrap5;ui</PackageTags>
+    <RepositoryUrl>https://github.com/IowaComputerGurus/aspnetcore.utilities.bootstrap5taghelpers</RepositoryUrl>
+    <Authors>MitchelSellers;IowaComputerGurus</Authors>
+    <Owners>IowaComputerGurus</Owners>
+	  <PackageIcon>icgAppIcon.png</PackageIcon>
+    <IsPackable>True</IsPackable>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AssemblyName>ICG.$(MSBuildProjectName)</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="icgAppIcon.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
