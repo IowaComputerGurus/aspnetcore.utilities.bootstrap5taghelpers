@@ -26,7 +26,7 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
     /// Allows the addition of a note to the field
     /// </summary>
     public string Note { get; set; }
-
+    public string ContainerClass { get; set; }
     /// <summary>
     ///     Used to actually process the tag helper
     /// </summary>
@@ -44,7 +44,7 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
         output.AddClass("form-control", HtmlEncoder.Default);
         //Add before div
 
-        this.StartFormGroup(output);
+        this.StartFormGroup(output, ContainerClass);
 
         //Generate our label
         this.AddLabel(output);

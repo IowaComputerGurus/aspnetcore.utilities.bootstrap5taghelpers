@@ -25,5 +25,8 @@ namespace AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models
         [Display(Name = "Country")]
         [Required]
         public int SelectedCountry { get; set; }
+
+        [Display(Name = "ReadOnly")]
+        public string ReadOnlyField { get; set; } = "Readonly Field Example";
     }
 }

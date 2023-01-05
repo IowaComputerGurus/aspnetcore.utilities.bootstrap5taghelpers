@@ -17,6 +17,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
     {
         /// <inheritdoc />
         public IHtmlGenerator HtmlGenerator { get; }
+        public string ContainerClass { get; set; }
 
         /// <summary>
         /// Default constructor
@@ -47,8 +48,8 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
             output.AddClass("form-control", HtmlEncoder.Default);
 
             //Add before div
-            this.StartFormGroup(output);
-            
+            this.StartFormGroup(output, ContainerClass);
+
             //Generate our label
             this.AddLabel(output);
 
@@ -56,7 +57,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
             this.AddValidationMessage(output);
 
             //Add child content if we have it
-            if(!childContent.IsEmptyOrWhiteSpace)
+            if (!childContent.IsEmptyOrWhiteSpace)
                 output.PostElement.AppendHtml(childContent);
 
             //Close wrapping div

@@ -15,7 +15,7 @@ namespace AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new SampleModel());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
