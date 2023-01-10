@@ -5,20 +5,22 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests;
 public class BadgeTagHelperTests : AbstractTagHelperTest
 {
     [Theory]
-    [InlineData(BootstrapColor.Primary, "badge badge-primary")]
-    [InlineData(BootstrapColor.Secondary, "badge badge-secondary")]
-    [InlineData(BootstrapColor.Success, "badge badge-success")]
-    [InlineData(BootstrapColor.Warning, "badge badge-warning")]
-    [InlineData(BootstrapColor.Info, "badge badge-info")]
-    [InlineData(BootstrapColor.Danger, "badge badge-danger")]
-    public void Should_Render_ProperClass(BootstrapColor color, string expectedClass)
+    [InlineData(BootstrapColor.Primary, false, "badge text-bg-primary")]
+    [InlineData(BootstrapColor.Secondary, false, "badge text-bg-secondary")]
+    [InlineData(BootstrapColor.Success, false, "badge text-bg-success")]
+    [InlineData(BootstrapColor.Warning, false, "badge text-bg-warning")]
+    [InlineData(BootstrapColor.Info, false, "badge text-bg-info")]
+    [InlineData(BootstrapColor.Danger, false, "badge text-bg-danger")]
+    [InlineData(BootstrapColor.Info, true, "badge text-bg-info rounded-pill")]
+    [InlineData(BootstrapColor.Danger, true, "badge text-bg-danger rounded-pill")]
+    public void Should_Render_ProperClass(BootstrapColor color, bool asPill, string expectedClass)
     {
         //Arrange
         var context = MakeTagHelperContext();
         var output = MakeTagHelperOutput("");
 
         //Act
-        var helper = new BadgeTagHelper {BadgeColor = color};
+        var helper = new BadgeTagHelper {BadgeColor = color, DisplayAsPill = asPill};
         helper.Process(context, output);
 
         //Assert

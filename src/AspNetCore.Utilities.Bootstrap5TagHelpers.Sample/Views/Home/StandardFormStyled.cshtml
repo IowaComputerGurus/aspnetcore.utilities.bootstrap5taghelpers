@@ -1,0 +1,63 @@
+﻿@using AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models
+@model AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models.SampleModel
+
+@{
+    ViewData["Title"] = "Bootstrap5 Tag Helper Demo - Standard Styled";
+}
+
+<alert alert-color="Info">
+    This demonstration shows the usage of the various Bootstrap5 Tag Helpers for form layouts with styled layouts
+</alert>
+
+<div class="row">
+    <div class="col-6">
+        <h2>Customized Form Layout</h2>
+        <p>This utilizes a customized form layout, including an example of a large field</p>
+        <form asp-controller="Home" asp-action="StandardFormStyled" method="post">
+            <div class="row g-3">
+                <form-input asp-for="FirstName" container-class="col-md-6"></form-input>
+                <form-input asp-for="LastName" container-class="col-md-6"></form-input>
+                <form-input asp-for="Email" container-class="col-12"></form-input>
+                <form-input asp-for="City" container-class="col-12">
+                    <form-note>Used to help identity where you are from</form-note>
+                </form-input>
+                <form-input asp-for="Password" container-class="col-md-6" input-size="Lg">
+                    <form-note>Isn't this pretty</form-note>
+                </form-input>
+                <form-input asp-for="ReadOnlyField" plain-text-read-only="true">
+                    <form-note>I'm plain text</form-note>
+                </form-input>
+                <form-select asp-for="SelectedListItem" asp-items="Html.GetEnumSelectList<SampleEnum>()"></form-select>
+            </div>
+            
+            <bs-button type="Submit" value="Click Here To Test Validation">Click Here To Test Validation</bs-button>
+        </form>
+    </div>
+    <div class="col-6">
+        <h2>Required Markup</h2>
+        <pre><code>&lt;form asp-controller="Home" asp-action="StandardFormStyled" method="post"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="row g-3"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-input asp-for="FirstName" container-class="col-md-6"&gt;&lt;/form-input&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-input asp-for="LastName" container-class="col-md-6"&gt;&lt;/form-input&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-input asp-for="Email" container-class="col-12"&gt;&lt;/form-input&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-input asp-for="City" container-class="col-12"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-note&gt;Used to help identity where you are from&lt;/form-note&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form-input&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-input asp-for="Password" container-class="col-md-6" input-size="Lg"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-note&gt;Isn't this pretty&lt;/form-note&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form-input&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-input asp-for="ReadOnlyField" plain-text-read-only="true"&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-note&gt;I'm plain text&lt;/form-note&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/form-input&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-select asp-for="SelectedListItem" asp-items="Html.GetEnumSelectList&lt;SampleEnum&gt;()"&gt;&lt;/form-select&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;bs-button type="Submit" value="Click Here To Test Validation"&gt;Click Here To Test Validation&lt;/bs-button&gt;
+&lt;/form&gt;</code></pre>
+    </div>
+</div>
+
+                
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

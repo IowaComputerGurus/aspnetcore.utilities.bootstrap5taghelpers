@@ -19,6 +19,11 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
         public IHtmlGenerator HtmlGenerator { get; }
 
         /// <summary>
+        /// The css class to be applied to the wrapping container
+        /// </summary>
+        public string ContainerClass { get; set; } = "mb-3";
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         /// <param name="generator">Html Generator for field generation</param>
@@ -47,8 +52,8 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
             output.AddClass("form-control", HtmlEncoder.Default);
 
             //Add before div
-            this.StartFormGroup(output);
-            
+            this.StartFormGroup(output, ContainerClass);
+
             //Generate our label
             this.AddLabel(output);
 
@@ -56,7 +61,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
             this.AddValidationMessage(output);
 
             //Add child content if we have it
-            if(!childContent.IsEmptyOrWhiteSpace)
+            if (!childContent.IsEmptyOrWhiteSpace)
                 output.PostElement.AppendHtml(childContent);
 
             //Close wrapping div

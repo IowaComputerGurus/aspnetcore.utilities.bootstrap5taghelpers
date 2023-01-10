@@ -17,8 +17,17 @@ internal interface IFormElementMixin
 
 internal static class FormElementMixinExtensions
 {
-    public static void StartFormGroup(this IFormElementMixin element, TagHelperOutput output)
-        => output.PreElement.AppendHtml("<div class='form-group'>");
+    public static void StartFormGroup(this IFormElementMixin element, TagHelperOutput output, string cssClass)
+    {
+        if (string.IsNullOrEmpty(cssClass))
+        {
+            output.PreElement.AppendHtml("<div>");
+        }
+        else
+        {
+            output.PreElement.AppendHtml($"<div class='{cssClass}'>");
+        }
+    }
 
     public static void EndFormGroup(this IFormElementMixin element, TagHelperOutput output)
         => output.PostElement.AppendHtml("</div>");
@@ -30,7 +39,7 @@ internal static class FormElementMixinExtensions
             element.ViewContext,
             element.For.ModelExplorer,
             element.For.Name, null,
-            new { @class = "control-label" });
+            new { @class = "form-label" });
         output.PreElement.AppendHtml(label);
     }
 

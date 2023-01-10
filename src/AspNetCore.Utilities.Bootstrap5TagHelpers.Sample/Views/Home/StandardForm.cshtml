@@ -1,0 +1,40 @@
+﻿@using AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models
+@model AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models.SampleModel
+
+@{
+    ViewData["Title"] = "Bootstrap5 Tag Helper Demo - Standard Forms";
+}
+
+<alert alert-color="Info">
+    This demonstration shows the usage of the various Bootstrap5 Tag Helpers for form layouts
+</alert>
+
+<div class="row">
+    <div class="col-6">
+        <h2>Standard Form Layout</h2>
+        <p>This example uses the standard form layout, without any customizations</p>
+        <form asp-controller="Home" asp-action="StandardForm" method="post">
+            <form-input asp-for="FirstName"></form-input>
+            <form-input asp-for="LastName"></form-input>
+            <form-input asp-for="Email"></form-input>
+            <form-input asp-for="City">
+                <form-note>Used to help identity where you are from</form-note>
+            </form-input>
+            <form-input asp-for="Password">
+                <form-note>Isn't this pretty</form-note>
+            </form-input>
+            <form-input asp-for="ReadOnlyField" plain-text-read-only="true">
+                <form-note>I'm plain text</form-note>
+            </form-input>
+            <form-select asp-for="SelectedListItem" asp-items="Html.GetEnumSelectList<SampleEnum>()">
+            </form-select>
+            
+            <bs-button type="Submit" value="Click Here To Test Validation">Click Here To Test Validation</bs-button>
+        </form>
+    </div>
+</div>
+
+                
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -66,6 +66,7 @@ At this time tag helpers have been implemented for the following elements.
 | --- | --- |
 | Alerts | Full support for implementation of alerts, including dismissible alerts |
 | Badges | Full support for implementation of badges of all Bootstrap color variations |
+| Buttons | Full support for implementation of buttons of all Bootstrap color variations, including outlines |
 | Cards | Support for Card, Card Header, Card Header Actions, and Card body elements |
 | Environment Alert | An extension of the `<environment>` tag helper to render as an alert style |
 | Input | Support for Form input controls for anything tied to the `<input>` tag including ASP.NET Code Model Binding & Validation |
