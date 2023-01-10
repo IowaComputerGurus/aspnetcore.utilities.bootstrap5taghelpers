@@ -16,10 +16,12 @@ public enum ButtonType
     ///     A regular button
     /// </summary>
     Button,
+
     /// <summary>
     ///     A form submit button
     /// </summary>
     Submit,
+
     /// <summary>
     ///     A form reset button
     /// </summary>
@@ -35,10 +37,12 @@ public enum ButtonSize
     ///     Normal size
     /// </summary>
     Normal,
+
     /// <summary>
     ///     A large button
     /// </summary>
     Large,
+
     /// <summary>
     ///     A small button
     /// </summary>
@@ -68,6 +72,11 @@ public class ButtonTagHelper : TagHelper
     public bool HideDisplay { get; set; }
 
     /// <summary>
+    ///     If selected will render as an outlined button
+    /// </summary>
+    public bool IsOutline { get; set; }
+
+    /// <summary>
     ///     The value of this button
     /// </summary>
     public string? Value { get; set; }
@@ -87,7 +96,7 @@ public class ButtonTagHelper : TagHelper
     /// </summary>
     public ButtonSize Size { get; set; } = ButtonSize.Normal;
 
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         if (HideDisplay)
@@ -95,15 +104,19 @@ public class ButtonTagHelper : TagHelper
             output.SuppressOutput();
             return;
         }
+
         output.TagName = "button";
         output.Attributes.Add("type", Type.ToString().ToLowerInvariant());
         output.AddClass("btn", HtmlEncoder.Default);
-        output.AddClass($"btn-{Color.ToString().ToLowerInvariant()}", HtmlEncoder.Default);
+        if(IsOutline)
+            output.AddClass($"btn-outline-{Color.ToString().ToLowerInvariant()}", HtmlEncoder.Default);
+        else
+            output.AddClass($"btn-{Color.ToString().ToLowerInvariant()}", HtmlEncoder.Default);
         output.Attributes.Add("role", "button");
 
         if (!string.IsNullOrEmpty(Value))
         {
-            output.Attributes.Add("value",Value);
+            output.Attributes.Add("value", Value);
         }
 
         if (Disabled)
@@ -126,7 +139,7 @@ public class ButtonTagHelper : TagHelper
             output.AddClass("btn-block", HtmlEncoder.Default);
         }
 
-        var content = await output.GetChildContentAsync();
+        TagHelperContent? content = await output.GetChildContentAsync();
         if (content.IsEmptyOrWhiteSpace)
         {
             output.TagMode = TagMode.SelfClosing;
@@ -135,9 +148,6 @@ public class ButtonTagHelper : TagHelper
         {
             output.TagMode = TagMode.StartTagAndEndTag;
             output.Content = content;
-
         }
-        return;
     }
 }
-

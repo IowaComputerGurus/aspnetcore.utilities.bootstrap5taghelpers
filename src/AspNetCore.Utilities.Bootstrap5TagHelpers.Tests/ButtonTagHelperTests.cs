@@ -54,6 +54,18 @@ public class ButtonTagHelperTests : LoggingTagHelperTest
     }
 
     [Theory]
+    [InlineData(BootstrapColor.Info, "btn-outline-info")]
+    [InlineData(BootstrapColor.Success, "btn-outline-success")]
+    [InlineData(BootstrapColor.Danger, "btn-outline-danger")]
+    [InlineData(BootstrapColor.Warning, "btn-outline-warning")]
+    public async Task Properly_Sets_Outline_Btn_Class(BootstrapColor color, string expected)
+    {
+        var output = await (new ButtonTagHelper() { Color = color, IsOutline = true}).Render();
+        output.AssertContainsClass(expected);
+        await VerifyTagHelper(output).UseParameters(color);
+    }
+
+    [Theory]
     [InlineData(null)]
     [InlineData("")]
     public async Task Value_Is_Not_Emitted_If_Value_Is_Null_Or_Empty(string value)
