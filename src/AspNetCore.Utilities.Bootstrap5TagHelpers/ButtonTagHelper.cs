@@ -117,7 +117,6 @@ public class ButtonTagHelper : TagHelper
             {
                 ButtonSize.Large => "btn-lg",
                 ButtonSize.Small => "btn-sm",
-                ButtonSize.Normal => "",
                 _ => throw new ArgumentOutOfRangeException(nameof(Size))
             }, HtmlEncoder.Default);
         }

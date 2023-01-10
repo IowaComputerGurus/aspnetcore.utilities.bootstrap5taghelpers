@@ -6,7 +6,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests.Form;
 public class FormNoteTagHelperTests : AbstractTagHelperTest
 {
     [Fact]
-    public async Task Should_Render_As_SmallTag_By_Default()
+    public async Task Should_Render_As_SpanTag_By_Default()
     {
         //Arrange
         var context = MakeTagHelperContext();
@@ -17,7 +17,7 @@ public class FormNoteTagHelperTests : AbstractTagHelperTest
         await helper.ProcessAsync(context, output);
 
         //Assert
-        Assert.Equal("small", output.TagName);
+        Assert.Equal("span", output.TagName);
     }
 
     [Fact]
@@ -42,7 +42,7 @@ public class FormNoteTagHelperTests : AbstractTagHelperTest
         //Arrange
         var context = MakeTagHelperContext();
         var output = MakeTagHelperOutput(" ");
-        var expectedClasses = "form-text text-muted";
+        var expectedClasses = "form-text";
 
         //Act
         var helper = new FormNoteTagHelper();
@@ -57,7 +57,7 @@ public class FormNoteTagHelperTests : AbstractTagHelperTest
     {
         //Arrange
         var customClass = "testing-out";
-        var expectedClass = $"{customClass} form-text text-muted";
+        var expectedClass = $"{customClass} form-text";
         var existingAttributes = new TagHelperAttributeList(new List<TagHelperAttribute>
             {new("class", customClass)});
         var context = MakeTagHelperContext();
@@ -75,8 +75,8 @@ public class FormNoteTagHelperTests : AbstractTagHelperTest
     public async Task Should_Render_Without_Duplicate_Classes_IfManuallyAdded()
     {
         //Arrange
-        var customClass = "text-muted";
-        var expectedClass = "text-muted form-text"; //Will be turned around due to appending
+        var customClass = "form-text";
+        var expectedClass = "form-text";
         var existingAttributes = new TagHelperAttributeList(new List<TagHelperAttribute>
             {new("class", customClass)});
         var context = MakeTagHelperContext();

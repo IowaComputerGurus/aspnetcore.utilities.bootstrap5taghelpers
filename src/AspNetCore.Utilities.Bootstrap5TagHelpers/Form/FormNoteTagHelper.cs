@@ -12,7 +12,7 @@ public class FormNoteTagHelper : TagHelper
     /// <summary>
     ///     What type of tag should be rendered, by default it is a button
     /// </summary>
-    public string TagName { get; set; } = "small";
+    public string TagName { get; set; } = "span";
 
     /// <summary>
     ///     Processes the tag helper
@@ -23,6 +23,5 @@ public class FormNoteTagHelper : TagHelper
     {
         output.TagName = TagName;
         output.AddClass("form-text", HtmlEncoder.Default);
-        output.AddClass("text-muted", HtmlEncoder.Default);
     }
 }

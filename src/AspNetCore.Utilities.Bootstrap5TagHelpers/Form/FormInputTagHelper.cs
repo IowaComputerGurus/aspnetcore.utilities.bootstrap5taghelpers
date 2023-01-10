@@ -18,12 +18,12 @@ public class FormInputTagHelper : InputTagHelper, IFormElementMixin
     /// <summary>
     ///     What size of input should this be
     /// </summary>
-    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Default;
+    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Standard;
 
     /// <summary>
     /// The CSS class that should be applied to the containing div
     /// </summary>
-    public string ContainerClass { get; set; }
+    public string ContainerClass { get; set; } = "mb-3";
 
     /// <summary>
     /// Indicator if the input should be rendered as plain-text/readonly
@@ -63,21 +63,20 @@ public class FormInputTagHelper : InputTagHelper, IFormElementMixin
             output.AddClass("form-control", HtmlEncoder.Default);
         }
 
-        if (InputSize != BootstrapFormControlSize.Default)
+        if (InputSize != BootstrapFormControlSize.Standard)
         {
             output.AddClass($"form-control-{InputSize.ToString().ToLower()}", HtmlEncoder.Default);
         }
 
-
-
         //Add before div
         this.StartFormGroup(output, ContainerClass);
 
-        //Generate our label
+        //Generate our label if not inline
         this.AddLabel(output);
 
-        //Now, add validation message AFTER the field
-        this.AddValidationMessage(output);
+        //Now, add validation message AFTER the field if it is not plain text
+        if(!PlainTextReadOnly)
+            this.AddValidationMessage(output);
 
         //Close wrapping div
         this.EndFormGroup(output);

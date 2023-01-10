@@ -18,6 +18,30 @@ namespace AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Controllers
             return View(new SampleModel());
         }
 
+        [HttpGet]
+        public IActionResult StandardForm()
+        {
+            return View(new SampleModel());
+        }
+
+        [HttpGet]
+        public IActionResult StandardFormStyled()
+        {
+            return View(new SampleModel());
+        }
+
+        [HttpPost]
+        public IActionResult StandardForm(SampleModel model)
+        {
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult StandardFormStyled(SampleModel model)
+        {
+            return View(model);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

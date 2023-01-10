@@ -27,6 +27,18 @@ public sealed class FormTextAreaTagHelperTests : ModelTagHelperTest<FormTextArea
     }
 
     [Fact]
+    public async Task Renders_CustomContainerClass()
+    {
+        var metadataProvider = new TestModelMetadataProvider();
+        var htmlGenerator = new TestableHtmlGenerator(metadataProvider);
+
+        var tagHelper = GetTagHelper(htmlGenerator, model: "Test", propertyName: nameof(TestModel.TextField));
+        tagHelper.ContainerClass = "col-md-6";
+        var output = await tagHelper.Render();
+        await VerifyTagHelper(output);
+    }
+
+    [Fact]
     public async Task Renders_Child_Content()
     {
         var metadataProvider = new TestModelMetadataProvider();

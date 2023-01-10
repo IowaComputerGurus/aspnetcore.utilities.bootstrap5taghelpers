@@ -26,7 +26,17 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
     /// Allows the addition of a note to the field
     /// </summary>
     public string Note { get; set; }
-    public string ContainerClass { get; set; }
+
+    /// <summary>
+    /// The class to be applied to the container
+    /// </summary>
+    public string ContainerClass { get; set; } = "mb-3";
+    
+    /// <summary>
+    ///     What size of input should this be
+    /// </summary>
+    public BootstrapFormControlSize InputSize { get; set; } = BootstrapFormControlSize.Standard;
+
     /// <summary>
     ///     Used to actually process the tag helper
     /// </summary>
@@ -42,8 +52,13 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
 
         //Add the form-control class
         output.AddClass("form-control", HtmlEncoder.Default);
-        //Add before div
 
+        if (InputSize != BootstrapFormControlSize.Standard)
+        {
+            output.AddClass($"form-control-{InputSize.ToString().ToLower()}", HtmlEncoder.Default);
+        }
+
+        //Add before div
         this.StartFormGroup(output, ContainerClass);
 
         //Generate our label
@@ -53,7 +68,7 @@ public class FormSelectTagHelper : SelectTagHelper, IFormElementMixin
         this.AddValidationMessage(output);
 
         if (!string.IsNullOrEmpty(Note))
-            output.PostElement.AppendHtml($"<small class=\"form-text text-muted\">{Note}</small>");
+            output.PostElement.AppendHtml($"<span class=\"form-text\">{Note}</small>");
 
         this.EndFormGroup(output);
     }

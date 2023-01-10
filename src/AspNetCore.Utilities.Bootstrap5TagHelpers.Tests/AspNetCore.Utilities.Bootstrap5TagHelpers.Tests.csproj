@@ -28,4 +28,34 @@
     <ProjectReference Include="..\AspNetCore.Utilities.Bootstrap5TagHelpers\AspNetCore.Utilities.Bootstrap5TagHelpers.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="VerifySnapshots\FormInputTagHelperTests.Renders_WithNoCustomContainerCssClass.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile).cs</DependentUpon>
+    </None>
+    <None Update="VerifySnapshots\FormInputTagHelperTests.Renders_Small.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile).cs</DependentUpon>
+    </None>
+    <None Update="VerifySnapshots\FormInputTagHelperTests.Renders_Large.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile).cs</DependentUpon>
+    </None>
+    <None Update="VerifySnapshots\FormInputTagHelperTests.Renders_PlainTextReadOnly.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+    </None>
+    <None Update="VerifySnapshots\FormSelectTagHelperTests.Renders_Large.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile).cs</DependentUpon>
+    </None>
+    <None Update="VerifySnapshots\FormSelectTagHelperTests.Renders_Small.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile).cs</DependentUpon>
+    </None>
+    <None Update="VerifySnapshots\FormTextAreaTagHelperTests.Renders_CustomContainerClass.verified.html">
+      <ParentFile>$([System.String]::Copy('%(FileName)').Split('.')[0])</ParentFile>
+      <DependentUpon>%(ParentFile).cs</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -90,6 +90,13 @@ public class ButtonTagHelperTests : LoggingTagHelperTest
     }
 
     [Fact]
+    public async Task Throws_Error_If_Invalid_ButtonSize()
+    {
+        var error = await Assert.ThrowsAsync<ArgumentOutOfRangeException>(async () => await (new ButtonTagHelper { Size = (ButtonSize)Int16.MaxValue }).Render());
+
+    }
+
+    [Fact]
     public async Task Adds_Class_If_Block_Button()
     {
         var output = await (new ButtonTagHelper() { Block=true }).Render();

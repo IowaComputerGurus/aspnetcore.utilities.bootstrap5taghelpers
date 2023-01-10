@@ -17,7 +17,11 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form
     {
         /// <inheritdoc />
         public IHtmlGenerator HtmlGenerator { get; }
-        public string ContainerClass { get; set; }
+
+        /// <summary>
+        /// The css class to be applied to the wrapping container
+        /// </summary>
+        public string ContainerClass { get; set; } = "mb-3";
 
         /// <summary>
         /// Default constructor
