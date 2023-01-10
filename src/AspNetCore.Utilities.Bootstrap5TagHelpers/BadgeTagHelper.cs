@@ -20,6 +20,11 @@ public class BadgeTagHelper : TagHelper
     public bool HideDisplay { get; set; }
 
     /// <summary>
+    ///     If set to true will add the class rounded-pill to the badge
+    /// </summary>
+    public bool DisplayAsPill { get; set; }
+
+    /// <summary>
     ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
@@ -36,6 +41,8 @@ public class BadgeTagHelper : TagHelper
         //Add
         output.TagName = "span";
         output.AddClass("badge", HtmlEncoder.Default);
-        output.AddClass($"badge-{BadgeColor.ToString().ToLower()}", HtmlEncoder.Default);
+        output.AddClass($"text-bg-{BadgeColor.ToString().ToLower()}", HtmlEncoder.Default);
+        if(DisplayAsPill)
+            output.AddClass("rounded-pill", HtmlEncoder.Default);
     }
 }
