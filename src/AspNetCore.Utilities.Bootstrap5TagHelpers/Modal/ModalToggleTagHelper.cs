@@ -32,8 +32,8 @@ public class ModalToggleTagHelper : TagHelper
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = TagName;
-        output.Attributes.Add("data-toggle", "modal");
-        output.Attributes.Add("data-target", $"#{Target}");
+        output.Attributes.Add("data-bs-toggle", "modal");
+        output.Attributes.Add("data-bs-target", $"#{Target}");
         output.AddClass("btn", HtmlEncoder.Default);
         output.AddClass($"btn-{ToggleColor.ToString().ToLower()}", HtmlEncoder.Default);
 

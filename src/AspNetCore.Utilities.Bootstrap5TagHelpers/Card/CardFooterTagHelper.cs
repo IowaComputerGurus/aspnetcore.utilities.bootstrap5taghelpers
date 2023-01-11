@@ -8,6 +8,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card;
 /// <summary>
 ///     Tag Helper for rendering the header for a card
 /// </summary>
+[HtmlTargetElement("card-footer", ParentTag = "card")]
 public class CardFooterTagHelper : TagHelper
 {
     /// <summary>

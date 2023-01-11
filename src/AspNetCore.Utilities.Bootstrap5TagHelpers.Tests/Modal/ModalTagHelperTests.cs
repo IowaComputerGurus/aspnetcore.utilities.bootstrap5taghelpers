@@ -120,7 +120,7 @@ public class ModalTagHelperTests : AbstractTagHelperTest
         string expectedAttributeValue)
     {
         //Arrange
-        var attributeName = "data-backdrop";
+        var attributeName = "data-bs-backdrop";
         TagHelperContext context = MakeTagHelperContext();
         TagHelperOutput output = MakeTagHelperOutput(" ");
 

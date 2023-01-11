@@ -22,8 +22,8 @@ public class ModalHeaderDismissTagHelperTests : AbstractTagHelperTest
 
     [Theory]
     [InlineData("aria-label", "Close")]
-    [InlineData("data-dismiss", "modal")]
-    [InlineData("class", "close")]
+    [InlineData("data-bs-dismiss", "modal")]
+    [InlineData("class", "btn-close")]
     [InlineData("type", "button")]
     public void Should_Set_Needed_Attributes(string expectedAttribute, string expectedValue)
     {

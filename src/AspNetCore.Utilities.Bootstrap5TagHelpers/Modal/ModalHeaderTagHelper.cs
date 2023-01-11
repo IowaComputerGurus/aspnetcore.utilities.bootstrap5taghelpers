@@ -11,12 +11,18 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Modal;
 /// <summary>
 ///     Renders a modal header content
 /// </summary>
+[HtmlTargetElement("modal-header", ParentTag = "modal")]
 public class ModalHeaderTagHelper : TagHelper
 {
     /// <summary>
     ///     The optional title to render for this particular title
     /// </summary>
     public string Title { get; set; }
+
+    /// <summary>
+    /// The title tag to be utilized
+    /// </summary>
+    public string TitleTag { get; set; } = "h2";
 
     /// <summary>
     ///     Completes the actual rendering of the Tag helper
@@ -44,8 +50,8 @@ public class ModalHeaderTagHelper : TagHelper
         //Add the title
         if (!string.IsNullOrEmpty(Title))
         {
-            var titleTag = new TagBuilder("h5");
-            titleTag.Attributes.Add("class", "modal-title");
+            var titleTag = new TagBuilder(TitleTag);
+            titleTag.Attributes.Add("class", "modal-title fs-5");
             if(!string.IsNullOrEmpty(modalContext.Id))
                 titleTag.Attributes.Add("id", $"{modalContext.Id}Label");
             titleTag.InnerHtml.Append(Title);

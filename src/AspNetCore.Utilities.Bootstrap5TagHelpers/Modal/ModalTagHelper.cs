@@ -47,10 +47,10 @@ public class ModalTagHelper : TagHelper
         
         if(!string.IsNullOrEmpty(id))
             output.Attributes.Add("aria-labelledby", $"{id}Label");
-
+        output.Attributes.Add("aria-hidden", "true");
         if (StaticBackdrop)
-            output.Attributes.Add("data-backdrop", "static");
-
+            output.Attributes.Add("data-bs-backdrop", "static");
+        output.Attributes.Add("tabindex", "-1");
         var dialogWrapper = new TagBuilder("div");
         dialogWrapper.AddCssClass("modal-dialog");
         var dialogContent = new TagBuilder("div");

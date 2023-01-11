@@ -10,6 +10,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card
     /// <summary>
     /// Tag Helper for rendering the header for a card
     /// </summary>
+    [HtmlTargetElement("card-header", ParentTag = "card")]
     public class CardHeaderTagHelper : TagHelper
     {
         /// <summary>
