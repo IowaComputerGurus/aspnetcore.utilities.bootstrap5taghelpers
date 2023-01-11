@@ -109,10 +109,9 @@ public class ButtonTagHelperTests : LoggingTagHelperTest
     }
 
     [Fact]
-    public async Task Adds_Class_If_Block_Button()
+    public async Task Adds_Attribute_If_Dismisses_Has_Value()
     {
-        var output = await (new ButtonTagHelper() { Block=true }).Render();
-        output.AssertContainsClass("btn-block");
+        var output = await (new ButtonTagHelper() { Dismisses = "modal"}).Render();
         await VerifyTagHelper(output);
     }
 

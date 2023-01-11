@@ -105,8 +105,8 @@ public class ModalHeaderTagHelperTests : AbstractTagHelperTest
     }
 
     [Theory]
-    [InlineData("My Title", "", "<h5 class=\"modal-title\">My Title</h5>")]
-    [InlineData("My Title", "myModal", "<h5 class=\"modal-title\" id=\"myModalLabel\">My Title</h5>")]
+    [InlineData("My Title", "", "<h2 class=\"modal-title fs-5\">My Title</h2>")]
+    [InlineData("My Title", "myModal", "<h2 class=\"modal-title fs-5\" id=\"myModalLabel\">My Title</h2>")]
     public async Task Should_Render_InnerContent_Title_When_Title_Provided(string title, string id, string expectedHtml)
     {
         //Arrange
@@ -116,6 +116,26 @@ public class ModalHeaderTagHelperTests : AbstractTagHelperTest
 
         //Act
         var helper = new ModalHeaderTagHelper { Title = title };
+        await helper.ProcessAsync(context, output);
+
+        //Assert
+        Assert.Equal(expectedHtml, output.Content.GetContent());
+    }
+
+    [Theory]
+    [InlineData("My Title", "", "", "<h2 class=\"modal-title fs-5\">My Title</h2>")]
+    [InlineData("My Title", "myModal", "h5", "<h5 class=\"modal-title fs-5\" id=\"myModalLabel\">My Title</h5>")]
+    public async Task Should_Render_InnerContent_Title_WithCustomTag_When_Title_Provided(string title, string id, string tag, string expectedHtml)
+    {
+        //Arrange
+        TagHelperContext context = MakeTagHelperContext();
+        context.Items.Add(typeof(ModalContext), new ModalContext { Id = id });
+        TagHelperOutput output = MakeTagHelperOutput(" ");
+        
+        //Act
+        var helper = new ModalHeaderTagHelper { Title = title };
+        if (!string.IsNullOrEmpty(tag))
+            helper.TitleTag = tag;
         await helper.ProcessAsync(context, output);
 
         //Assert

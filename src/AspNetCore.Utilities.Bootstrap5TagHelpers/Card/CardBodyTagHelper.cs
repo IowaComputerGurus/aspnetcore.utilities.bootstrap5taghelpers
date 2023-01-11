@@ -8,6 +8,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card
     /// <summary>
     /// Tag Helper for the body of a Card
     /// </summary>
+    [HtmlTargetElement("card-body", ParentTag = "card")]
     public class CardBodyTagHelper : TagHelper
     {
         /// <summary>

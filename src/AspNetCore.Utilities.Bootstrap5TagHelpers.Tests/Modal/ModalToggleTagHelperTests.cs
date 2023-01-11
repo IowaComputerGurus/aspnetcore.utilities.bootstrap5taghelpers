@@ -62,7 +62,7 @@ public class ModalToggleTagHelperTests : AbstractTagHelperTest
         helper.Process(context, output);
 
         //Assert
-        Assert.Equal("modal", output.Attributes["data-toggle"].Value);
+        Assert.Equal("modal", output.Attributes["data-bs-toggle"].Value);
     }
 
     [Fact]
@@ -77,7 +77,7 @@ public class ModalToggleTagHelperTests : AbstractTagHelperTest
         helper.Process(context, output);
 
         //Assert
-        Assert.Equal("#testTarget", output.Attributes["data-target"].Value);
+        Assert.Equal("#testTarget", output.Attributes["data-bs-target"].Value);
     }
 
     [Fact]

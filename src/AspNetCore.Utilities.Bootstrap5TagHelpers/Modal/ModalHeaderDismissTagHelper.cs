@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Html;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
+﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
 
@@ -20,13 +18,9 @@ public class ModalHeaderDismissTagHelper : TagHelper
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = "button";
-        output.Attributes.Add("aria-label", "Close");
-        output.Attributes.Add("data-dismiss", "modal");
-        output.AddClass("close", HtmlEncoder.Default);
+        output.Attributes.Add("data-bs-dismiss", "modal");
+        output.AddClass("btn-close", HtmlEncoder.Default);
         output.Attributes.Add("type", "button");
-        var icon = new TagBuilder("span");
-        icon.Attributes.Add("aria-hidden", "true");
-        icon.InnerHtml.SetHtmlContent("&times;");
-        output.Content.AppendHtml(icon);
+        output.Attributes.Add("aria-label", "Close");
     }
 }

@@ -1,5 +1,4 @@
-﻿using ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Contexts;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
+﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
@@ -7,28 +6,22 @@ using System.Threading.Tasks;
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card;
 
 /// <summary>
-/// A tag helper for rendering a bootstrap card to a view
+///     Tag Helper for rendering the header for a card
 /// </summary>
-[RestrictChildren("card-header", "card-body", "card-footer")]
-public class CardTagHelper : TagHelper
+[HtmlTargetElement("card-footer", ParentTag = "card")]
+public class CardFooterTagHelper : TagHelper
 {
     /// <summary>
-    /// Processes the tag helper
+    ///     Renders the card
     /// </summary>
     /// <param name="context"></param>
     /// <param name="output"></param>
     /// <returns></returns>
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
-        var id = output.Attributes["id"]?.Value?.ToString();
-
         output.TagName = "div";
-
-        output.AddClass("card", HtmlEncoder.Default);
-
-        // setup content
-        var cardContext = new CardContext {Id = id};
-        context.Items[typeof(CardContext)] = cardContext;
+        output.AddClass("card-footer", HtmlEncoder.Default);
+        output.AddClass("text-muted", HtmlEncoder.Default);
 
         var content = (await output.GetChildContentAsync()).GetContent();
 

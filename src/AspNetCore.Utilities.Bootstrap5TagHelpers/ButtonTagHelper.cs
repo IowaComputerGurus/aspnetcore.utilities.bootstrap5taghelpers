@@ -87,9 +87,9 @@ public class ButtonTagHelper : TagHelper
     public bool Disabled { get; set; }
 
     /// <summary>
-    ///     Is this a block level button
+    /// If a value is provided this 
     /// </summary>
-    public bool Block { get; set; }
+    public string? Dismisses { get; set; }
 
     /// <summary>
     ///     The size of this button
@@ -134,9 +134,9 @@ public class ButtonTagHelper : TagHelper
             }, HtmlEncoder.Default);
         }
 
-        if (Block)
+        if (!string.IsNullOrEmpty(Dismisses))
         {
-            output.AddClass("btn-block", HtmlEncoder.Default);
+            output.Attributes.Add("data-bs-dismiss", Dismisses);
         }
 
         TagHelperContent? content = await output.GetChildContentAsync();

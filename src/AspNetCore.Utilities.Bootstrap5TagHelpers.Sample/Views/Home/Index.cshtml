@@ -253,21 +253,27 @@
         <tr>
             <td>
                 <card>
-                    <card-header></card-header>
+                    <card-header title="Testing Header"></card-header>
+                    <card-body>
+                        This is my card body
+                    </card-body>
                 </card>
             </td>
             <td>
                 <code>
                     &lt;card&gt;
-                    &lt;card-header &gt;&lt;/card-header&gt;
+                    &lt;card-header title=&quot;Testing Header&quot;&gt;&lt;/card-header&gt;
+                    &lt;card-body&gt;
+                    This is my card body
+                    &lt;/card-body&gt;
                     &lt;/card&gt;
                 </code>
             </td>
         </tr>
         <tr>
             <td>
-                <card class="bg-success text-white">
-                    <card-header title="With Title"></card-header>
+                <card class="bg-success text-white" id="testing-card-id">
+                    <card-header title="With Title and Id"></card-header>
                 </card>
             </td>
             <td>
@@ -290,6 +296,9 @@
                     <card-body>
                         <p>This is my body</p>
                     </card-body>
+                    <card-footer>
+                        This is my footer
+                    </card-footer>
                 </card>
             </td>
             <td>
@@ -327,7 +336,7 @@
                     Launch Demo
                 </modal-toggle>
 
-                <modal id="testing" class="im-weird">
+                <modal id="testing" class="im-weird" vertically-centered="true" >
                     <modal-header Title="Testing Modal Header">
                         <modal-header-dismiss></modal-header-dismiss>
                     </modal-header>
@@ -335,7 +344,7 @@
                         <form-input asp-for="FirstName"></form-input>
                     </modal-body>
                     <modal-footer>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <bs-button bs-color="Secondary" dismisses="modal">Close</bs-button>
                     </modal-footer>
                 </modal>
             </td>
@@ -358,7 +367,45 @@
                     &lt;/modal&gt;
                 </code>
             </td>
-        </tr>
+        </tr>      
+    <tr>
+        <td>
+            <modal-toggle Target="testing-secondary">
+                Launch Demo
+            </modal-toggle>
+
+            <modal id="testing-secondary" class="im-weird" vertically-centered="true" static-backdrop="true" >
+                <modal-header Title="Testing Modal Header">
+                    <modal-header-dismiss></modal-header-dismiss>
+                </modal-header>
+                <modal-body>
+                    <form-input asp-for="FirstName"></form-input>
+                </modal-body>
+                <modal-footer>
+                    <bs-button bs-color="Secondary" dismisses="modal">Close</bs-button>
+                </modal-footer>
+            </modal>
+        </td>
+        <td>
+            <code>
+                &lt;modal-toggle Target=&quot;testing&quot;&gt;
+                Launch Demo
+                &lt;/modal-toggle&gt;
+
+                &lt;modal id=&quot;testing&quot;&gt;
+                &lt;modal-header Title=&quot;Testing Modal Header&quot;&gt;
+                &lt;modal-header-dismiss&gt;&lt;/modal-header-dismiss&gt;
+                &lt;/modal-header&gt;
+                &lt;modal-body&gt;
+                &lt;form-input asp-for=&quot;FirstName&quot;&gt;&lt;/form-input&gt;
+                &lt;/modal-body&gt;
+                &lt;modal-footer&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;/modal-footer&gt;
+                &lt;/modal&gt;
+            </code>
+        </td>
+    </tr>      
     </tbody>
 </table>
 
