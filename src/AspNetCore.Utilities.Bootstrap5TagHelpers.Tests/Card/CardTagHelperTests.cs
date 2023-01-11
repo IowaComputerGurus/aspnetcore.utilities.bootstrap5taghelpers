@@ -22,11 +22,27 @@ public class CardTagHelperTests : AbstractTagHelperTest
     }
 
     [Fact]
+    public async Task Should_Add_Context_Object_Without_Id_If_Missing()
+    {
+        //Arrange
+        var context = MakeTagHelperContext();
+        var output = MakeTagHelperOutput(" ");
+
+        //Act
+        var helper = new CardTagHelper();
+        await helper.ProcessAsync(context, output);
+
+        //Assert
+        var generatedContext = Assert.IsType<CardContext>(context.Items[typeof(CardContext)]);
+        Assert.Null(generatedContext.Id);
+    }
+
+    [Fact]
     public async Task Should_Add_Context_Object_With_Provided_Id()
     {
         //Arrange
         var context = MakeTagHelperContext();
-        var providedId = "testingCarg";
+        var providedId = "testingCard";
         var existingAttributes = new TagHelperAttributeList(new List<TagHelperAttribute>
             {new("id", providedId)});
         var output = MakeTagHelperOutput(" ", existingAttributes);

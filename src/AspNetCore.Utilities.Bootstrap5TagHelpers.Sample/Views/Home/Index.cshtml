@@ -253,21 +253,27 @@
         <tr>
             <td>
                 <card>
-                    <card-header></card-header>
+                    <card-header title="Testing Header"></card-header>
+                    <card-body>
+                        This is my card body
+                    </card-body>
                 </card>
             </td>
             <td>
                 <code>
                     &lt;card&gt;
-                    &lt;card-header &gt;&lt;/card-header&gt;
+                    &lt;card-header title=&quot;Testing Header&quot;&gt;&lt;/card-header&gt;
+                    &lt;card-body&gt;
+                    This is my card body
+                    &lt;/card-body&gt;
                     &lt;/card&gt;
                 </code>
             </td>
         </tr>
         <tr>
             <td>
-                <card class="bg-success text-white">
-                    <card-header title="With Title"></card-header>
+                <card class="bg-success text-white" id="testing-card-id">
+                    <card-header title="With Title and Id"></card-header>
                 </card>
             </td>
             <td>
@@ -290,6 +296,9 @@
                     <card-body>
                         <p>This is my body</p>
                     </card-body>
+                    <card-footer>
+                        This is my footer
+                    </card-footer>
                 </card>
             </td>
             <td>
