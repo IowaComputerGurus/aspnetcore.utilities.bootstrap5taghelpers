@@ -336,7 +336,7 @@
                     Launch Demo
                 </modal-toggle>
 
-                <modal id="testing" class="im-weird">
+                <modal id="testing" class="im-weird" vertically-centered="true" >
                     <modal-header Title="Testing Modal Header">
                         <modal-header-dismiss></modal-header-dismiss>
                     </modal-header>
@@ -367,7 +367,45 @@
                     &lt;/modal&gt;
                 </code>
             </td>
-        </tr>
+        </tr>      
+    <tr>
+        <td>
+            <modal-toggle Target="testing-secondary">
+                Launch Demo
+            </modal-toggle>
+
+            <modal id="testing-secondary" class="im-weird" vertically-centered="true" static-backdrop="true" >
+                <modal-header Title="Testing Modal Header">
+                    <modal-header-dismiss></modal-header-dismiss>
+                </modal-header>
+                <modal-body>
+                    <form-input asp-for="FirstName"></form-input>
+                </modal-body>
+                <modal-footer>
+                    <bs-button bs-color="Secondary" dismisses="modal">Close</bs-button>
+                </modal-footer>
+            </modal>
+        </td>
+        <td>
+            <code>
+                &lt;modal-toggle Target=&quot;testing&quot;&gt;
+                Launch Demo
+                &lt;/modal-toggle&gt;
+
+                &lt;modal id=&quot;testing&quot;&gt;
+                &lt;modal-header Title=&quot;Testing Modal Header&quot;&gt;
+                &lt;modal-header-dismiss&gt;&lt;/modal-header-dismiss&gt;
+                &lt;/modal-header&gt;
+                &lt;modal-body&gt;
+                &lt;form-input asp-for=&quot;FirstName&quot;&gt;&lt;/form-input&gt;
+                &lt;/modal-body&gt;
+                &lt;modal-footer&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;/modal-footer&gt;
+                &lt;/modal&gt;
+            </code>
+        </td>
+    </tr>      
     </tbody>
 </table>
 

@@ -19,6 +19,23 @@ public class ModalTagHelper : TagHelper
     public bool StaticBackdrop { get; set; } = false;
 
     /// <summary>
+    /// If set to true the modal will have the added class of modal-dialog-centered
+    /// </summary>
+    public bool VerticallyCentered { get; set; } = false;
+
+    /// <summary>
+    /// If set to true the modal will have the added class of modal-dialog-scrollable
+    /// </summary>
+    public bool Scrollable { get; set; } = false;
+
+    public override void Init(TagHelperContext context)
+    {
+        //Reset
+        if(context.Items.ContainsKey(typeof(ModalContext)))
+            context.Items.Remove(typeof(ModalContext));
+    }
+
+    /// <summary>
     ///     Renders the tag helper
     /// </summary>
     /// <param name="context"></param>
@@ -53,6 +70,10 @@ public class ModalTagHelper : TagHelper
         output.Attributes.Add("tabindex", "-1");
         var dialogWrapper = new TagBuilder("div");
         dialogWrapper.AddCssClass("modal-dialog");
+        if (VerticallyCentered)
+            dialogWrapper.AddCssClass("modal-dialog-centered");
+        if (Scrollable)
+            dialogWrapper.AddCssClass("modal-dialog-scrollable");
         var dialogContent = new TagBuilder("div");
         dialogContent.AddCssClass("modal-content");
         dialogContent.InnerHtml.AppendHtml(body);

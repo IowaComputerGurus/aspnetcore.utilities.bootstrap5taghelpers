@@ -139,6 +139,7 @@ public class ModalTagHelperTests : AbstractTagHelperTest
         }
     }
 
+    
     [Fact]
     public async Task Should_Render_Proper_InnerHtmlStructure_WithNoChildContent()
     {
@@ -148,6 +149,38 @@ public class ModalTagHelperTests : AbstractTagHelperTest
 
         //Act
         var helper = new ModalTagHelper();
+        await helper.ProcessAsync(context, output);
+
+        //Assert
+        Assert.Equal(expectedContent, output.Content.GetContent());
+    }
+
+    [Fact]
+    public async Task Should_Render_Centered_Class_When_Flagged()
+    {
+        //Arrange
+        TagHelperContext context = MakeTagHelperContext();
+        TagHelperOutput output = MakeTagHelperOutput(" ");
+        var expectedContent = "<div class=\"modal-dialog modal-dialog-centered\"><div class=\"modal-content\"></div></div>";
+
+        //Act
+        var helper = new ModalTagHelper { VerticallyCentered = true };
+        await helper.ProcessAsync(context, output);
+
+        //Assert
+        Assert.Equal(expectedContent, output.Content.GetContent());
+    }
+
+    [Fact]
+    public async Task Should_Render_Scrollable_Class_When_Flagged()
+    {
+        //Arrange
+        TagHelperContext context = MakeTagHelperContext();
+        TagHelperOutput output = MakeTagHelperOutput(" ");
+        var expectedContent = "<div class=\"modal-dialog modal-dialog-scrollable\"><div class=\"modal-content\"></div></div>";
+
+        //Act
+        var helper = new ModalTagHelper { Scrollable = true };
         await helper.ProcessAsync(context, output);
 
         //Assert
