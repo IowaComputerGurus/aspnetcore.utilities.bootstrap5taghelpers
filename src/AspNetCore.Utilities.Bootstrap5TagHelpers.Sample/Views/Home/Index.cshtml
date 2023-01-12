@@ -441,6 +441,85 @@
     </tbody>
 </table>
 
+<h2>OffCanvas</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Display</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Simple Setup</td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                Show Demo
+            </button>
+            <offcanvas id="offcanvasExample">
+                <offcanvas-header title="Example 1">
+                    <offcanvas-dismiss></offcanvas-dismiss>
+                </offcanvas-header>
+                <offcanvas-body>
+                    <h3>Magic Content</h3>
+                    <p>Goes here!</p>
+                </offcanvas-body>
+            </offcanvas>
+        </td>
+        </tr>
+    <tr>
+        <td>Static Backdrop</td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2">
+                Show Example
+            </button>
+            <offcanvas id="offcanvasExample2" static-backdrop="true">
+                <offcanvas-header title="Example 2">
+                    <offcanvas-dismiss></offcanvas-dismiss>
+            </offcanvas-header>
+                <offcanvas-body>
+                    <h3>Magic Content</h3>
+                    <p>Goes here!</p>
+                </offcanvas-body>
+            </offcanvas>
+        </td>
+    </tr>
+    <tr>
+        <td>Body Scroll Backdrop</td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-controls="offcanvasExample3">
+                Show Example
+            </button>
+            <offcanvas id="offcanvasExample3" enable-body-scrolling="true">
+                <offcanvas-header title="Example 3">
+                    <offcanvas-dismiss></offcanvas-dismiss>
+                </offcanvas-header>
+                <offcanvas-body>
+                    <h3>Magic Content</h3>
+                    <p>Goes here!</p>
+                </offcanvas-body>
+            </offcanvas>
+        </td>
+        </tr>
+        <tr>
+            <td>Placement</td>
+            <td>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-controls="offcanvasExample4">
+                    Show Example
+                </button>
+                <offcanvas id="offcanvasExample4" placement="End">
+                    <offcanvas-header title="Example 4">
+                        <offcanvas-dismiss></offcanvas-dismiss>
+                    </offcanvas-header>
+                    <offcanvas-body>
+                        <h3>Magic Content</h3>
+                        <p>Goes here!</p>
+                    </offcanvas-body>
+                </offcanvas>
+            </td>
+        </tr>
+    </tbody>
+</table>
 <style>
     code {
         white-space: pre;
