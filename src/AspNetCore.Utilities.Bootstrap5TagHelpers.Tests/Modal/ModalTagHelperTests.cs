@@ -1,6 +1,7 @@
 ﻿using ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Contexts;
 using ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Modal;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Drawing;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests.Modal;
 
@@ -181,6 +182,49 @@ public class ModalTagHelperTests : AbstractTagHelperTest
 
         //Act
         var helper = new ModalTagHelper { Scrollable = true };
+        await helper.ProcessAsync(context, output);
+
+        //Assert
+        Assert.Equal(expectedContent, output.Content.GetContent());
+    }
+
+    [Theory]
+    [InlineData(ModalSize.Small, "modal-dialog modal-sm")]
+    [InlineData(ModalSize.Default, "modal-dialog")]
+    [InlineData(ModalSize.Large, "modal-dialog modal-lg")]
+    [InlineData(ModalSize.ExtraLarge, "modal-dialog modal-xl")]
+    public async Task Should_Render_ProperModalDialogClass_ForSize(ModalSize size, string expectedClass)
+    {
+        //Arrange
+        TagHelperContext context = MakeTagHelperContext();
+        TagHelperOutput output = MakeTagHelperOutput(" ");
+        var expectedContent = $"<div class=\"{expectedClass}\"><div class=\"modal-content\"></div></div>";
+
+        //Act
+        var helper = new ModalTagHelper { Size = size};
+        await helper.ProcessAsync(context, output);
+
+        //Assert
+        Assert.Equal(expectedContent, output.Content.GetContent());
+    }
+
+    [Theory]
+    [InlineData(ModalFullscreenMode.Never, "modal-dialog")]
+    [InlineData(ModalFullscreenMode.Always, "modal-dialog modal-fullscreen")]
+    [InlineData(ModalFullscreenMode.BelowSmall, "modal-dialog modal-fullscreen-sm-down")]
+    [InlineData(ModalFullscreenMode.BelowMedium, "modal-dialog modal-fullscreen-md-down")]
+    [InlineData(ModalFullscreenMode.BelowLarge, "modal-dialog modal-fullscreen-lg-down")]
+    [InlineData(ModalFullscreenMode.BelowXLarge, "modal-dialog modal-fullscreen-xl-down")]
+    [InlineData(ModalFullscreenMode.BelowXXLarge, "modal-dialog modal-fullscreen-xxl-down")]
+    public async Task Should_Render_ProperModalDialogClass_ForFullscreen(ModalFullscreenMode mode, string expectedClass)
+    {
+        //Arrange
+        TagHelperContext context = MakeTagHelperContext();
+        TagHelperOutput output = MakeTagHelperOutput(" ");
+        var expectedContent = $"<div class=\"{expectedClass}\"><div class=\"modal-content\"></div></div>";
+
+        //Act
+        var helper = new ModalTagHelper { FullscreenMode = mode};
         await helper.ProcessAsync(context, output);
 
         //Assert
