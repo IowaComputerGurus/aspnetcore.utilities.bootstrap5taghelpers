@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Modal;
+namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.OffCanvas;
 
 /// <summary>
-///     Builds the content for a Modal Body
+/// Tag helper for rendering the 
 /// </summary>
-[HtmlTargetElement("modal-body", ParentTag = "modal")]
-public class ModalBodyTagHelper : TagHelper
+[HtmlTargetElement("offcanvas-body", ParentTag = "offcanvas")]
+public class OffCanvasBodyTagHelper : TagHelper
 {
     /// <summary>
     ///     Renders the body element with the wrapping div and class
@@ -20,7 +20,7 @@ public class ModalBodyTagHelper : TagHelper
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
         output.TagName = "div";
-        output.AddClass("modal-body", HtmlEncoder.Default);
+        output.AddClass("offcanvas-body", HtmlEncoder.Default);
         var body = (await output.GetChildContentAsync()).GetContent();
         body = body.Trim();
         output.Content.AppendHtml(body);
