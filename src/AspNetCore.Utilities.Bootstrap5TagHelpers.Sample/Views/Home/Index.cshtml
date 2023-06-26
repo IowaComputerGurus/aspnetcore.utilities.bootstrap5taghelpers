@@ -324,50 +324,50 @@
 
 <table class="table table-striped table-hover">
     <thead>
-        <tr>
-            <th>Example</th>
-            <th>Code</th>
-        </tr>
+    <tr>
+        <th>Example</th>
+        <th>Code</th>
+    </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>
-                <modal-toggle Target="testing">
-                    Launch Demo
-                </modal-toggle>
+    <tr>
+        <td>
+            <modal-toggle Target="testing">
+                Launch Demo
+            </modal-toggle>
 
-                <modal id="testing" class="im-weird" vertically-centered="true" >
-                    <modal-header Title="Testing Modal Header">
-                        <modal-header-dismiss></modal-header-dismiss>
-                    </modal-header>
-                    <modal-body>
-                        <form-input asp-for="FirstName"></form-input>
-                    </modal-body>
-                    <modal-footer>
-                        <bs-button bs-color="Secondary" dismisses="modal">Close</bs-button>
-                    </modal-footer>
-                </modal>
-            </td>
-            <td>
-                <code>
-                    &lt;modal-toggle Target=&quot;testing&quot;&gt;
-                    Launch Demo
-                    &lt;/modal-toggle&gt;
+            <modal id="testing" class="im-weird" vertically-centered="true" >
+                <modal-header Title="Testing Modal Header">
+                    <modal-header-dismiss></modal-header-dismiss>
+                </modal-header>
+                <modal-body>
+                    <form-input asp-for="FirstName"></form-input>
+                </modal-body>
+                <modal-footer>
+                    <bs-button bs-color="Secondary" dismisses="modal">Close</bs-button>
+                </modal-footer>
+            </modal>
+        </td>
+        <td>
+            <code>
+                &lt;modal-toggle Target=&quot;testing&quot;&gt;
+                Launch Demo
+                &lt;/modal-toggle&gt;
 
-                    &lt;modal id=&quot;testing&quot;&gt;
-                    &lt;modal-header Title=&quot;Testing Modal Header&quot;&gt;
-                    &lt;modal-header-dismiss&gt;&lt;/modal-header-dismiss&gt;
-                    &lt;/modal-header&gt;
-                    &lt;modal-body&gt;
-                    &lt;form-input asp-for=&quot;FirstName&quot;&gt;&lt;/form-input&gt;
-                    &lt;/modal-body&gt;
-                    &lt;modal-footer&gt;
-                    &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
-                    &lt;/modal-footer&gt;
-                    &lt;/modal&gt;
-                </code>
-            </td>
-        </tr>      
+                &lt;modal id=&quot;testing&quot;&gt;
+                &lt;modal-header Title=&quot;Testing Modal Header&quot;&gt;
+                &lt;modal-header-dismiss&gt;&lt;/modal-header-dismiss&gt;
+                &lt;/modal-header&gt;
+                &lt;modal-body&gt;
+                &lt;form-input asp-for=&quot;FirstName&quot;&gt;&lt;/form-input&gt;
+                &lt;/modal-body&gt;
+                &lt;modal-footer&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+                &lt;/modal-footer&gt;
+                &lt;/modal&gt;
+            </code>
+        </td>
+    </tr>      
     <tr>
         <td>
             <modal-toggle Target="testing-secondary">
@@ -409,6 +409,117 @@
     </tbody>
 </table>
 
+<h2>Progress</h2>
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Description</th>
+        <th>Display</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>Simple Progress</th>
+        <th><progress progress-value="75" ></progress></th>
+        </tr>
+        <tr>
+            <th>With Background</th>
+            <th><progress progress-value="75" background-color="BootstrapColor.Danger"></progress></th>
+        </tr>
+    <tr>
+        <th>With Background, Striped</th>
+        <th><progress progress-value="75" background-color="BootstrapColor.Danger" is-striped="true"></progress></th>
+        </tr>
+        <tr>
+            <th>With Background, Striped, Animated</th>
+            <th><progress progress-value="75" background-color="BootstrapColor.Danger" is-striped="true" is-animated="true"></progress></th>
+        </tr>
+    <tr>
+        <th>With Background, Striped, Animated, Label</th>
+        <th><progress progress-value="75" background-color="BootstrapColor.Danger" is-striped="true" is-animated="true" progress-display-label="75%"></progress></th>
+    </tr>
+    </tbody>
+</table>
+
+<h2>OffCanvas</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Display</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Simple Setup</td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                Show Demo
+            </button>
+            <offcanvas id="offcanvasExample">
+                <offcanvas-header title="Example 1">
+                    <offcanvas-dismiss></offcanvas-dismiss>
+                </offcanvas-header>
+                <offcanvas-body>
+                    <h3>Magic Content</h3>
+                    <p>Goes here!</p>
+                </offcanvas-body>
+            </offcanvas>
+        </td>
+        </tr>
+    <tr>
+        <td>Static Backdrop</td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2" aria-controls="offcanvasExample2">
+                Show Example
+            </button>
+            <offcanvas id="offcanvasExample2" static-backdrop="true">
+                <offcanvas-header title="Example 2">
+                    <offcanvas-dismiss></offcanvas-dismiss>
+            </offcanvas-header>
+                <offcanvas-body>
+                    <h3>Magic Content</h3>
+                    <p>Goes here!</p>
+                </offcanvas-body>
+            </offcanvas>
+        </td>
+    </tr>
+    <tr>
+        <td>Body Scroll Backdrop</td>
+        <td>
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample3" aria-controls="offcanvasExample3">
+                Show Example
+            </button>
+            <offcanvas id="offcanvasExample3" enable-body-scrolling="true">
+                <offcanvas-header title="Example 3">
+                    <offcanvas-dismiss></offcanvas-dismiss>
+                </offcanvas-header>
+                <offcanvas-body>
+                    <h3>Magic Content</h3>
+                    <p>Goes here!</p>
+                </offcanvas-body>
+            </offcanvas>
+        </td>
+        </tr>
+        <tr>
+            <td>Placement</td>
+            <td>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample4" aria-controls="offcanvasExample4">
+                    Show Example
+                </button>
+                <offcanvas id="offcanvasExample4" placement="End">
+                    <offcanvas-header title="Example 4">
+                        <offcanvas-dismiss></offcanvas-dismiss>
+                    </offcanvas-header>
+                    <offcanvas-body>
+                        <h3>Magic Content</h3>
+                        <p>Goes here!</p>
+                    </offcanvas-body>
+                </offcanvas>
+            </td>
+        </tr>
+    </tbody>
+</table>
 <style>
     code {
         white-space: pre;
