@@ -35,11 +35,11 @@ The goal of these tag helpers is to reduce the redundant coding, and compliance 
 The following markup is how you would output a model-bound field for a password field, including a note on complexity and validation.
 
 ``` razor
-<div class="form-group">
-    <label asp-for="Password" class="control-label"></label>
+<div class="mb-3">
+    <label asp-for="Password" class="form-label"></label>
     <input asp-for="Password" class="form-control" />
     <span asp-validation-for="Password" class="text-danger"></span>
-    <small class="form-text text-muted">Must be 8 characters with letters & numbers</small>
+    <div class="form-text text-muted">Must be 8 characters with letters & numbers</div>
 </div>
 ```
 
@@ -76,3 +76,5 @@ At this time tag helpers have been implemented for the following elements.
 | TextArea | Support for Form input controls tied to the `<textarea>` tag including ASP.NET Core Model Binding & Validation | 
 
 If you find that we are missing a particular tag helper, we welcome contributions!
+
+## 
