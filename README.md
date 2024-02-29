@@ -6,12 +6,7 @@ A collection of TagHelpers for ASP.NET Core that make utilizing the Bootstrap 5.
 
 ![](https://img.shields.io/nuget/v/icg.aspnetcore.utilities.bootstrap5taghelpers.svg) ![](https://img.shields.io/nuget/dt/icg.aspnetcore.utilities.bootstrap5taghelpers.svg)
 
-## SonarCloud Analysis
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers&metric=alert_status)](https://sonarcloud.io/dashboard?id=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers&metric=coverage)](https://sonarcloud.io/dashboard?id=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers&metric=security_rating)](https://sonarcloud.io/dashboard?id=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers&metric=sqale_index)](https://sonarcloud.io/dashboard?id=IowaComputerGurus_aspnetcore.utilities.bootstrap5taghelpers)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6bfab3e64b8d4138aefc6152d39bd753)](https://app.codacy.com/gh/IowaComputerGurus/aspnetcore.utilities.bootstrap5taghelpers/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 ## Usage Expectations
 
@@ -77,4 +72,13 @@ At this time tag helpers have been implemented for the following elements.
 
 If you find that we are missing a particular tag helper, we welcome contributions!
 
-## 
+## Special Features
+
+The tag helpers automatically inspect form elements and add a "required" css class in addition to the `form-label` class default allowing for indication of required fields easily with CSS such as the following.
+
+```` css
+label.required:after {
+    content: " *";
+    color: red;
+}
+````
