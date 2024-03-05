@@ -85,6 +85,18 @@ public sealed class FormInputTagHelperTests : ModelTagHelperTest<FormInputTagHel
         await VerifyTagHelper(output);
     }
 
+    [Fact]
+    public async Task Renders_RequiredClassWhenNeeded()
+    {
+        var metadataProvider = new TestModelMetadataProvider();
+        var htmlGenerator = new TestableHtmlGenerator(metadataProvider);
+
+        var tagHelper = GetTagHelper(htmlGenerator, model: new TestModel(), propertyName: nameof(TestModel.RequiredIntField));
+        tagHelper.PlainTextReadOnly = true;
+        var output = await tagHelper.Render();
+        await VerifyTagHelper(output);
+    }
+
     internal override FormInputTagHelper TagHelperFactory(IHtmlGenerator htmlGenerator, ModelExpression modelExpression, ViewContext viewContext)
         => new(htmlGenerator) { For = modelExpression, ViewContext = viewContext };
 }

@@ -38,6 +38,6 @@ namespace AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models
         public string ReadOnlyField { get; set; } = "Readonly Field Example";
 
         [Display(Name = "Select List Item")]
-        public SampleEnum SelectedListItem { get; set; }
+        public SampleEnum? SelectedListItem { get; set; }
     }
 }

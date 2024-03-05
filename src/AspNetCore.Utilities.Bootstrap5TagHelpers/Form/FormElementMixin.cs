@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Form;
 
@@ -34,12 +36,15 @@ internal static class FormElementMixinExtensions
 
     public static void AddLabel(this IFormElementMixin element, TagHelperOutput output)
     {
+        //Find out if required to add special class
+        var isRequired = element.For.ModelExplorer.Metadata.ValidatorMetadata.Any(o => o is RequiredAttribute);
+        var targetClass = isRequired ? "form-label required" : "form-label";
         //Generate our label
         var label = element.HtmlGenerator.GenerateLabel(
             element.ViewContext,
             element.For.ModelExplorer,
             element.For.Name, null,
-            new { @class = "form-label" });
+            new { @class = targetClass });
         output.PreElement.AppendHtml(label);
     }
 
