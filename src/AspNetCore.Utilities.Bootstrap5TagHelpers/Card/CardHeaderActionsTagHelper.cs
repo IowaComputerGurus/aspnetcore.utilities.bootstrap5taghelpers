@@ -10,7 +10,7 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card;
 /// <summary>
 /// Helper for rendering actions within the header of a card
 /// </summary>
-[RestrictChildren("button", "a")]
+[RestrictChildren("button", "a", "div")]
 public class CardHeaderActionsTagHelper : TagHelper
 {
     /// <summary>
