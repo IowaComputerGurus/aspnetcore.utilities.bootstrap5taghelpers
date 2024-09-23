@@ -41,6 +41,16 @@ public class ProgressTagHelper : TagHelper
     public int ProgressValue { get; set; } = 0;
 
     /// <summary>
+    ///    The minimum value for the progress bar
+    /// </summary>
+    public int MinValue { get; set; } = 0;
+
+    /// <summary>
+    ///   The maximum value for the progress bar
+    /// </summary>
+    public int MaxValue { get; set; } = 100;
+
+    /// <summary>
     ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
@@ -48,7 +58,7 @@ public class ProgressTagHelper : TagHelper
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
         //Validate progress value
-        if (ProgressValue < 0 || ProgressValue > 100)
+        if (ProgressValue < MinValue || ProgressValue > MaxValue)
             throw new ArgumentOutOfRangeException("ProgressValue", "The progress value must be within the range");
 
         //Add
@@ -58,13 +68,14 @@ public class ProgressTagHelper : TagHelper
         if (!string.IsNullOrEmpty(AriaLabel))
             output.Attributes.Add("aria-label", AriaLabel);
         output.Attributes.Add("aria-valuenow", ProgressValue.ToString());
-        output.Attributes.Add("aria-valuemin", "0");
-        output.Attributes.Add("aria-valuemax", "100");
+        output.Attributes.Add("aria-valuemin", MinValue.ToString());
+        output.Attributes.Add("aria-valuemax", MaxValue.ToString());
 
         //Build the internal tag
         var barTag = new TagBuilder("div");
         barTag.AddCssClass("progress-bar");
-        barTag.Attributes.Add("style", $"width: {ProgressValue}%");
+        var progress = ((ProgressValue - MinValue) / (MaxValue - (decimal)MinValue)) * 100;
+        barTag.Attributes.Add("style", $"width: {progress}%");
         if (!string.IsNullOrEmpty(ProgressDisplayLabel))
             barTag.InnerHtml.Append(ProgressDisplayLabel);
         if(BackgroundColor.HasValue)
