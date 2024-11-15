@@ -5,13 +5,8 @@ using Xunit.Abstractions;
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests;
 
 [UsesVerify]
-public class ButtonTagHelperTests : LoggingTagHelperTest
+public class ButtonTagHelperTests(ITestOutputHelper output) : LoggingTagHelperTest(output)
 {
-    public ButtonTagHelperTests(ITestOutputHelper output) : base(output)
-    {
-        
-    }
-
     [Fact]
     public async Task Should_Not_Render_If_HideDisplay_Is_True()
     {
