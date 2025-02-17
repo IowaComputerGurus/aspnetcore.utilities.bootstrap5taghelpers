@@ -34,19 +34,23 @@ internal static class FormElementMixinExtensions
     public static void EndFormGroup(this IFormElementMixin element, TagHelperOutput output)
         => output.PostElement.AppendHtml("</div>");
 
-    public static void AddLabel(this IFormElementMixin element, TagHelperOutput output)
+    public static void AddLabel(this IFormElementMixin element, TagHelperOutput output, string cssClass = "form-label", bool isPostElement = false)
     {
         //Find out if required to add special class
         var isRequired = element.For.ModelExplorer.Metadata.ValidatorMetadata.Any(o => o is RequiredAttribute);
-        var targetClass = isRequired ? "form-label required" : "form-label";
+        var targetClass = isRequired ? $"{cssClass} required" : cssClass;
         //Generate our label
         var label = element.HtmlGenerator.GenerateLabel(
             element.ViewContext,
             element.For.ModelExplorer,
             element.For.Name, null,
             new { @class = targetClass });
-        output.PreElement.AppendHtml(label);
+        if (isPostElement)
+            output.PostElement.AppendHtml(label);
+        else
+            output.PreElement.AppendHtml(label);
     }
+
 
     public static void AddValidationMessage(this IFormElementMixin element, TagHelperOutput output)
     {

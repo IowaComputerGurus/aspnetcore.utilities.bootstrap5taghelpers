@@ -28,7 +28,16 @@
             </form-input>
             <form-select asp-for="SelectedListItem" asp-items="Html.GetEnumSelectList<SampleEnum>()">
             </form-select>
-            
+            <form-checkbox asp-for="SetDefaultPassword" is-switch="true"></form-checkbox>
+            <form-checkbox asp-for="AgreeToTerms" disabled="true"></form-checkbox>
+            <div class="mb-3">
+                <label>Select Your Options</label>
+                <form-checkbox asp-for="Item1" container-class=""></form-checkbox>
+                <form-checkbox asp-for="Item2" container-class=""></form-checkbox>
+                <form-checkbox asp-for="Item3" container-class=""></form-checkbox>
+                <form-checkbox asp-for="Item4" container-class=""></form-checkbox>
+            </div>
+
             <bs-button type="Submit" value="Click Here To Test Validation">Click Here To Test Validation</bs-button>
         </form>
     </div>

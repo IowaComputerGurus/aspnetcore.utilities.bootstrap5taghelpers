@@ -39,5 +39,23 @@ namespace AspNetCore.Utilities.Bootstrap5TagHelpers.Sample.Models
 
         [Display(Name = "Select List Item")]
         public SampleEnum? SelectedListItem { get; set; }
+
+        [Display(Name = "Set Default Password")]
+        public bool SetDefaultPassword { get; set; }
+
+        [Display(Name = "Agree to Terms (Disabled)")]
+        public bool AgreeToTerms { get; set; } = true;
+
+        [Display(Name = "Item 1")]
+        public bool Item1 { get; set; }
+
+        [Display(Name = "Item 2")]
+        public bool Item2 { get; set; }
+
+        [Display(Name = "Item 3")]
+        public bool Item3 { get; set; }
+
+        [Display(Name = "Item 4")]
+        public bool Item4 { get; set; }
     }
 }
