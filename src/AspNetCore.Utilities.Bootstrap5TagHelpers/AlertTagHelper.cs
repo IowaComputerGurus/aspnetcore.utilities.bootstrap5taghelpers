@@ -27,6 +27,11 @@ public class AlertTagHelper : TagHelper
     public bool Dismissible { get; set; } = false;
 
     /// <summary>
+    ///     If supplied this will render as a heading inside the alert.
+    /// </summary>
+    public string? HeadingText { get; set; }
+
+    /// <summary>
     ///     Processes the tag helper
     /// </summary>
     /// <param name="context"></param>
@@ -50,10 +55,21 @@ public class AlertTagHelper : TagHelper
             output.AddClass("fade", HtmlEncoder.Default);
             output.AddClass("show", HtmlEncoder.Default);
         }
+
         output.Attributes.Add("role", "alert");
 
+        if (!string.IsNullOrEmpty(HeadingText))
+        {
+            var headingBuilder = new TagBuilder("h4");
+            headingBuilder.AddCssClass("alert-heading");
+            headingBuilder.InnerHtml.Append(HeadingText);
+            output.PreContent.AppendHtml(headingBuilder);
+        }
+
         if (!Dismissible)
+        {
             return;
+        }
 
         var buttonBuilder = new TagBuilder("button");
         buttonBuilder.Attributes.Add("type", "button");
@@ -62,7 +78,7 @@ public class AlertTagHelper : TagHelper
         buttonBuilder.Attributes.Add("aria-label", "Close");
 
         //Get existing content
-        var existing = await output.GetChildContentAsync();
+        TagHelperContent existing = await output.GetChildContentAsync();
         output.Content.AppendHtml(existing.GetContent());
         output.Content.AppendHtml(buttonBuilder);
     }
