@@ -37,6 +37,13 @@
                 <form-checkbox asp-for="Item3" container-class=""></form-checkbox>
                 <form-checkbox asp-for="Item4" container-class=""></form-checkbox>
             </div>
+            <div class="mb-3">
+                <label>Inline Options</label>
+                <form-checkbox asp-for="Item1" container-class="" is-inline="true"></form-checkbox>
+                <form-checkbox asp-for="Item2" container-class="" is-inline="true"></form-checkbox>
+                <form-checkbox asp-for="Item3" container-class="" is-inline="true"></form-checkbox>
+                <form-checkbox asp-for="Item4" container-class="" is-inline="true"></form-checkbox>
+            </div>
 
             <bs-button type="Submit" value="Click Here To Test Validation">Click Here To Test Validation</bs-button>
         </form>

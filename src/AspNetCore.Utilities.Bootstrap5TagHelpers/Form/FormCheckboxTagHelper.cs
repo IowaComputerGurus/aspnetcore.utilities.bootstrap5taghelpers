@@ -32,6 +32,11 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
     /// </summary>
     public bool IsSwitch { get; set; } = false;
 
+    /// <summary>
+    /// Controls if this should be rendered inline
+    /// </summary>
+    public bool IsInline { get; set; } = false;
+
 
     /// <summary>
     ///     Public constructor that will receive the incoming generator to leverage existing Microsoft Tag Helpers
@@ -69,6 +74,10 @@ public class FormCheckboxTagHelper : InputTagHelper, IFormElementMixin
         {
             groupClass += " form-switch";
             output.Attributes.Add("role", "switch");
+        }
+        if (IsInline)
+        {
+            groupClass += " form-check-inline";
         }
         this.StartFormGroup(output, groupClass);
         
