@@ -27,13 +27,14 @@ jobs:
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v4.0.1
       with:
-        versionSpec: '6.0.5'
+        versionSpec: '6.3.x'
 
     - name: Determine Version
       id: gitversion
       uses: gittools/actions/gitversion/execute@v4.0.1
       with:
         useConfigFile: true
+        versionSpec: '6.3.x'
         
     - name: Restore Packages
       run: dotnet restore "${{ env.solution-path }}"
