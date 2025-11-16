@@ -7,4 +7,6 @@ public class TestModel
 
     [Required]
     public int? RequiredIntField { get; set; }
+
+    public bool CheckboxField { get; set; }
 }
