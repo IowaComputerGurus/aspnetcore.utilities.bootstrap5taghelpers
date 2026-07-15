@@ -10,7 +10,9 @@ namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Card;
 /// <summary>
 /// Helper for rendering actions within the header of a card
 /// </summary>
-[RestrictChildren("button", "a", "div")]
+/// <remarks>
+/// When using t his element it is important to put either button or div, as this does have its own wrapping div
+/// </remarks>
 public class CardHeaderActionsTagHelper : TagHelper
 {
     /// <summary>
