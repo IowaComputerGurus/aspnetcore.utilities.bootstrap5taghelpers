@@ -11,7 +11,6 @@ using Xunit.Abstractions;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests.OffCanvas;
 
-[UsesVerify]
 public class OffCanvasTagHelperTests : LoggingTagHelperTest
 {
     public OffCanvasTagHelperTests(ITestOutputHelper output) : base(output)

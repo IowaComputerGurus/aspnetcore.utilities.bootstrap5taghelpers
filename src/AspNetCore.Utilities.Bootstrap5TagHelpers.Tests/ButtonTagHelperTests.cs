@@ -4,7 +4,6 @@ using Xunit.Abstractions;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests;
 
-[UsesVerify]
 public class ButtonTagHelperTests(ITestOutputHelper output) : LoggingTagHelperTest(output)
 {
     [Fact]
@@ -125,4 +124,3 @@ public class ButtonTagHelperTests(ITestOutputHelper output) : LoggingTagHelperTe
         await VerifyTagHelper(output);
     }
 }
-

@@ -6,7 +6,6 @@ using Xunit.Abstractions;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests.Form;
 
-[UsesVerify]
 public sealed class FormCheckboxTagHelperTests : ModelTagHelperTest<FormCheckboxTagHelper, TestModel>
 {
     public FormCheckboxTagHelperTests(ITestOutputHelper output) : base(output)

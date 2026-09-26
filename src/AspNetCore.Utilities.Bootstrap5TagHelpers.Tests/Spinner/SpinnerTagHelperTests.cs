@@ -3,7 +3,6 @@ using Xunit.Abstractions;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests.Spinner;
 
-[UsesVerify]
 public class SpinnerTagHelperTests(ITestOutputHelper output) : LoggingTagHelperTest(output)
 {
     [Fact]
