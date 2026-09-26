@@ -8,7 +8,6 @@ using Xunit.Abstractions;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests;
 
-[UsesVerify]
 public class ProgressTagHelperTests : LoggingTagHelperTest
 {
     public ProgressTagHelperTests(ITestOutputHelper output) : base(output)

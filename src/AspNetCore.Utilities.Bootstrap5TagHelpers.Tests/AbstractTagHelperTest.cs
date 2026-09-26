@@ -44,10 +44,25 @@ public abstract class AbstractTagHelperTest
             });
     }
 
-    public virtual SettingsTask VerifyTagHelper(TagHelperOutput output, Action<INodeList>? action) => Verify(output.Render())
-        .UseExtension("html")
-        .ScrubEmptyLines()
-        .PrettyPrintHtml(action);
+    public virtual SettingsTask VerifyTagHelper(TagHelperOutput output, Action<INodeList>? action)
+    {
+        var renderedOutput = output.Render();
+        var normalizedOutput = string.IsNullOrEmpty(renderedOutput) ? "emptyString" : renderedOutput;
+        var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid():N}.html");
+        File.WriteAllText(tempFile, normalizedOutput);
+
+        var verifyFileTask = VerifyFile(tempFile)
+            .OnVerify(() => { }, () => File.Delete(tempFile));
+
+        if (string.IsNullOrEmpty(renderedOutput))
+        {
+            return verifyFileTask;
+        }
+
+        return verifyFileTask
+            .ScrubEmptyLines("html")
+            .PrettyPrintHtml(action);
+    }
 
     public virtual SettingsTask VerifyTagHelper(TagHelperOutput output) => VerifyTagHelper(output, null);
 }

@@ -10,12 +10,12 @@ public static class Initializer
         VerifyAngleSharpDiffing.Initialize();
 
         // Shove all the verify files into a custom directory
-        VerifierSettings.DerivePathInfo((file, directory, type, method) =>
+        DerivePathInfo((file, directory, type, method) =>
             new PathInfo(Path.Combine(directory, "VerifySnapshots"), type.Name, method.Name));
 
         // Automatically "verify" tests on the first run
 
-        VerifierSettings.OnFirstVerify(pair =>
+        VerifierSettings.OnFirstVerify((pair, _, _) =>
         {
             File.Move(pair.ReceivedPath, pair.VerifiedPath);
             return Task.CompletedTask;

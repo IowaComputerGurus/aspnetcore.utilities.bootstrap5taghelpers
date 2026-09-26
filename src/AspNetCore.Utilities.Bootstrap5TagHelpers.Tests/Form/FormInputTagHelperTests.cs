@@ -6,7 +6,6 @@ using Xunit.Abstractions;
 
 namespace ICG.AspNetCore.Utilities.Bootstrap5TagHelpers.Tests.Form;
 
-[UsesVerify]
 public sealed class FormInputTagHelperTests : ModelTagHelperTest<FormInputTagHelper, TestModel>
 {
     public FormInputTagHelperTests(ITestOutputHelper output) : base(output)
@@ -100,4 +99,3 @@ public sealed class FormInputTagHelperTests : ModelTagHelperTest<FormInputTagHel
     internal override FormInputTagHelper TagHelperFactory(IHtmlGenerator htmlGenerator, ModelExpression modelExpression, ViewContext viewContext)
         => new(htmlGenerator) { For = modelExpression, ViewContext = viewContext };
 }
-
